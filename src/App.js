@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import {
+    BrowserRouter as Router, 
+    Route, 
+    Switch,
+} from 'react-router-dom';
+import Header from './components/Header.js'
+import SignUp from './AuthPages/SignUP.js';
+import Login from './AuthPages/LogIn.js';
+import TodoList from './TodoListpage/TodoList.js'
+import HomePage from './HomePage.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state ={
+    user:'',
+  }
+
+  handleUserChange = (user) =>{
+    this.setState({user})
+    localStorage.setItem(`USER`, JSON.stringify(user))
+  }
+
+    render() {
+        return (
+            <div>
+                <Router>
+                  <Header/>
+                    <Switch>
+                        <Route 
+                            path="/" 
+                            exact
+                            render={(routerProps) => <HomePage {...routerProps} />} 
+                        />
+                        <Route 
+                            path="/signup" 
+                            exact
+                            render={(routerProps) => <SignUp handleUserChange={this.handleUserChange} {...routerProps} />} 
+                        />
+                        <Route 
+                          path="/login" 
+                          exact
+                          render={(routerProps) =>
+                          <Login handleUserChange={this.handleUserChange}{...routerProps} />} 
+                        />
+                        <Route
+                          path="/todos" 
+                          exact
+                          render={(routerProps) =>
+                          <TodoList {...routerProps} />} 
+                        />
+                    </Switch>
+                </Router>
+            </div>
+        )
+    }
 }
-
-export default App;
