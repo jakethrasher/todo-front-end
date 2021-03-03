@@ -9,18 +9,18 @@ import SignUp from './AuthPages/SignUP.js';
 import Login from './AuthPages/LogIn.js';
 import TodoList from './TodoListpage/TodoList.js'
 import HomePage from './HomePage.js';
-import{ getToken } from './local-storage-utils.js'
+import{ getTokenFromLocalStorage } from './local-storage-utils.js'
 import PrivateRoute from './components/PrivateRoute.js';
 
 
 export default class App extends Component {
   state ={
-    token:getToken(),
+    token:getTokenFromLocalStorage(),
   }
   
   handleUserChange = (user) =>{
     this.setState({token: user.token})
-    localStorage.setItem(`TOKEN`, JSON.stringify(user))
+    localStorage.setItem(`TOKEN`, JSON.stringify(user.token))
   }
 
     render() {
