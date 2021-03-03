@@ -18,9 +18,9 @@ export default class App extends Component {
     token:getToken(),
   }
   
-  handleUserChange = (token) =>{
-    this.setState({token: token})
-    localStorage.setItem(`TOKEN`, JSON.stringify(token))
+  handleUserChange = (user) =>{
+    this.setState({token: user.token})
+    localStorage.setItem(`TOKEN`, JSON.stringify(user))
   }
 
     render() {

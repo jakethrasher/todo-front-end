@@ -16,11 +16,13 @@ export default class LogIn extends Component {
         e.preventDefault();
         const user = await loginUser(this.state.email, this.state.password)
         
-        this.props.handleUserChange(user.token);
+        this.props.handleUserChange(user);
+        this.props.history.push('/todos')
     }
     render() {
         return (
             <div>
+                <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Email

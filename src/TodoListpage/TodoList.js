@@ -33,6 +33,7 @@ export default class TodoList extends Component {
         
         return (
             <div>
+                <h3>Make a todo list and select the item when completed</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         <input type="text" onChange={this.handleInputChange} value={this.state.todo}/>

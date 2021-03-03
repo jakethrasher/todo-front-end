@@ -16,14 +16,16 @@ handlePasswordChange = (e) =>{
 handleSubmit = async (e) =>{
     e.preventDefault();
     const user = await signUpUser(this.state.email, this.state.password)
-    const token = user.token;
-    this.props.handleUserChange(token);
+    
+    this.props.handleUserChange(user);
+    this.props.history.push('/todos');
 }
     render() {
         
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <h1>Sign Up</h1>
                     <label>
                         Email
                         <input type="text" onChange={this.handleEmailChange} value={this.state.email}/>
