@@ -26,3 +26,10 @@ export async function createTodo(todo, token){
     .send({todo});
     return response.body
 }
+export async function completeTodo(todoId, token){
+    const response = await request
+    .put(`${URL}/api/todos/${todoId}`)
+    .set('Authorization', token)
+
+    return response.body
+}

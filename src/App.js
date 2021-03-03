@@ -10,6 +10,7 @@ import Login from './AuthPages/LogIn.js';
 import TodoList from './TodoListpage/TodoList.js'
 import HomePage from './HomePage.js';
 import{ getToken } from './local-storage-utils.js'
+import PrivateRoute from './components/PrivateRoute.js';
 
 
 export default class App extends Component {
@@ -44,9 +45,10 @@ export default class App extends Component {
                           render={(routerProps) =>
                           <Login handleUserChange={this.handleUserChange}{...routerProps} />} 
                         />
-                        <Route
+                        <PrivateRoute
                           path="/todos" 
                           exact
+                          token={this.state.token}
                           render={(routerProps) =>
                           <TodoList token={this.state.token}{...routerProps} />} 
                         />

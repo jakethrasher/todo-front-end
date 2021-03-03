@@ -1,0 +1,23 @@
+.todo{
+    background-color: lightblue;
+    font-size: 1.3em;
+    width: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+.completed-todo{
+    background-color: lightblue;
+    font-size: 1.3em;
+    width: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+    text-decoration-line: line-through;
+}

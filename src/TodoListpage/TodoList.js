@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getTodos, createTodo } from '../api-utils'
-
+import { getTodos, createTodo, completeTodo } from '../api-utils'
+import './TodoList.css'
 export default class TodoList extends Component {
     state = {
         todoList:[],
@@ -24,6 +24,11 @@ export default class TodoList extends Component {
 
         this.setState({todo:''})
     }
+    handleComplete = async(id)=>{
+        await completeTodo(id, this.props.token);
+
+        this.fetchTodos();
+    }
     render() {
         
         return (
@@ -36,7 +41,7 @@ export default class TodoList extends Component {
                 </form>
                 <div>
                     {this.state.todoList.map(item=> 
-                        <p key={item.id}>{item.todo}</p>
+                        <p onClick={()=>this.handleComplete(item.id)} key={item.id} className={item.completed ? "completed-todo" : "todo"}>{item.todo}</p>
                     )}
                 </div>
             </div>
