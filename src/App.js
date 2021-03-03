@@ -9,15 +9,17 @@ import SignUp from './AuthPages/SignUP.js';
 import Login from './AuthPages/LogIn.js';
 import TodoList from './TodoListpage/TodoList.js'
 import HomePage from './HomePage.js';
+import{ getToken } from './local-storage-utils.js'
+
 
 export default class App extends Component {
   state ={
-    user:'',
+    token:getToken(),
   }
-
-  handleUserChange = (user) =>{
-    this.setState({user})
-    localStorage.setItem(`USER`, JSON.stringify(user))
+  
+  handleUserChange = (token) =>{
+    this.setState({token: token})
+    localStorage.setItem(`TOKEN`, JSON.stringify(token))
   }
 
     render() {
@@ -46,7 +48,7 @@ export default class App extends Component {
                           path="/todos" 
                           exact
                           render={(routerProps) =>
-                          <TodoList {...routerProps} />} 
+                          <TodoList token={this.state.token}{...routerProps} />} 
                         />
                     </Switch>
                 </Router>

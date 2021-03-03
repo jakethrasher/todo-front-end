@@ -15,8 +15,8 @@ export default class LogIn extends Component {
     handleSubmit = async (e) =>{
         e.preventDefault();
         const user = await loginUser(this.state.email, this.state.password)
-    
-        this.props.handleUserChange(user);
+        
+        this.props.handleUserChange(user.token);
     }
     render() {
         return (

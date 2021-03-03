@@ -14,3 +14,15 @@ export async function loginUser (email, password) {
     
     return response.body
 }
+export async function getTodos(token){
+    const response = await request.get(`${URL}/api/todos`)
+    .set('Authorization', token)
+    return response.body
+}
+export async function createTodo(todo, token){
+    const response = await request
+    .post(`${URL}/api/todos`)
+    .set('Authorization', token)
+    .send({todo});
+    return response.body
+}
