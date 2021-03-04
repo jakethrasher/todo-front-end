@@ -15,7 +15,8 @@ export async function loginUser (email, password) {
     return response.body
 }
 export async function getTodos(token){
-    const response = await request.get(`${URL}/api/todos`)
+    const response = await request
+    .get(`${URL}/api/todos`)
     .set('Authorization', token)
     return response.body
 }
